@@ -12,3 +12,5 @@ echo "Attempting to build $project for Windows"
   -projectPath $(pwd) \
   -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
   -quit
+
+cat $(pwd)/unity.log

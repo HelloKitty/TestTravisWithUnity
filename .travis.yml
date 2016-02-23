@@ -4,7 +4,13 @@ language: objective-c
 osx_image: xcode61
 rvm:
 - 2.1.2
+
+before_install:
+  - chmod +x ./Build.sh
+  - chmod +x ./Install.sh
+
 install:
-- ./install.sh
+- ./Install.sh
+
 script:
-- ./build.sh
+- ./Build.sh

@@ -1,0 +1,10 @@
+# This sets up a Mac OS enviroment on TravisCI and installs and builds the project.
+
+language: objective-c
+osx_image: xcode61
+rvm:
+- 2.1.2
+install:
+- ./Scripts/install.sh
+script:
+- ./Scripts/build.sh

@@ -13,4 +13,14 @@ echo "Attempting to build $project for Windows"
   -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
   -quit
 
-cat $(pwd)/unity.log
+
+# Exit with the current exit code
+if [ $? -eq 0 ]
+then
+	cat $(pwd)/unity.log
+	exit 0
+else
+	cat $(pwd)/unity.log
+	echo "Failure to build Application"
+	exit $?
+fi

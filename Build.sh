@@ -22,5 +22,5 @@ then
 else
 	cat $(pwd)/unity.log
 	echo "Failure to build Application"
-	exit $?
+	exit 1
 fi

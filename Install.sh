@@ -1,8 +1,9 @@
 #! /bin/sh
 
 # Based on https://github.com/vergenzt/ci-build/blob/unity-5.3/Scripts/install.sh which updates support for 5.3 component based installer.
+# Corrected for Unity's decision to change to download instead of netstorage
 
-BASE_URL=http://netstorage.unity3d.com/unity
+BASE_URL=http://download.unity3d.com/download_unity
 HASH=cc9cbbcc37b4
 VERSION=5.3.1f1
 

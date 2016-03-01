@@ -19,8 +19,14 @@ after_success:
 # We need to update home brew because we're gonna pull down a Mega.co tool with it
 - brew update 
 # Install the Mega.co C tools from: https://github.com/megous/megatools
+# Install some random 7zip homebrew tool
 - brew install megatools
+- brew install p7zip
 # Make it runnable
 - chmod +x /usr/local/Cellar/megatools/megacopy
+- chmod +x /usr/local/Cellar/megatools/p7zip
+# 7Zip the directory
+- 7z a ci-build.7z ./Build/windows/ci-build_data
 - ls
-- megacopy -r /Root/ci-build_data -l ./Build/windows/ci-build_data -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password
+# Push it up to Mega.co
+- megacopy -r /Root/ci-build_data -l ./Build/windows/ci-build.7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password

@@ -21,4 +21,5 @@ after_success:
 # Install the Mega.co C tools from: https://github.com/megous/megatools
 - brew install megatools
 # Make it runnable
-- chmod +x /usr/local/Cellar/megacopy
+- chmod +x /usr/local/Cellar/megatools/megacopy
+- megacopy -r /Root -l ci-build -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password

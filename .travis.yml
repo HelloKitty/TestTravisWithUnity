@@ -29,4 +29,4 @@ after_success:
 - 7z a ci-build.7z ./Build/windows/ci-build_data
 - ls
 # Push it up to Mega.co
-- megacopy -r /Root/ci-build_data -l ./Build/windows/ci-build.7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password
+- megacopy -r /Root -l ./Build/windows/ci-build.7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password

@@ -14,3 +14,11 @@ install:
 
 script:
 - ./Build.sh
+
+after_success:
+# We need to update home brew because we're gonna pull down a Mega.co tool with it
+- brew update 
+# Install the Mega.co C tools from: https://github.com/megous/megatools
+- brew install megatools
+# Make it runnable
+- chmod +x /usr/local/Cellar/megacopy

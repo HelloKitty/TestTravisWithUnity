@@ -22,4 +22,5 @@ after_success:
 - brew install megatools
 # Make it runnable
 - chmod +x /usr/local/Cellar/megatools/megacopy
-- megacopy -r /Root -l /Build/windows/ci-build -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password
+- ls
+- megacopy -r /Root -l ./Build/windows/ci-build -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password

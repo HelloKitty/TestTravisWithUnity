@@ -26,7 +26,7 @@ after_success:
 - chmod +x /usr/local/Cellar/megatools/megacopy
 - chmod +x /usr/local/Cellar/megatools/p7zip
 # 7Zip the directory
-- 7z a ci-build.7z ./Build/windows/ci-build_data
+- 7z a ci-build.7z ./Build/windows/ci-build_data -r
 - ls
 # Push it up to Mega.co
 - megacopy -r /Root -l ./Build/windows/ci-build.7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password

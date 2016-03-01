@@ -23,4 +23,4 @@ after_success:
 # Make it runnable
 - chmod +x /usr/local/Cellar/megatools/megacopy
 - ls
-- megacopy -r /Root -l ./Build/windows/ci-build_data -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password
+- megacopy -r /Root/ci-build_data -l ./Build/windows/ci-build_data -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password

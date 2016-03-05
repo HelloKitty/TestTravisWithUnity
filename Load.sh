@@ -1,7 +1,7 @@
 #! /bin/sh
 
-# Change this the name of your project. This will be the name of the final executables as well.
-# This will open Unity3D and attempt to generate a build
+# Change this the name of your project.
+# Loads the Unity3D project by opening the editor.
 
 project="QABuild"
 
@@ -11,7 +11,6 @@ echo "Attempting to build $project for Windows"
   -nographics \
   -logFile $(pwd)/unity.log \
   -projectPath $(pwd) \
-  -buildWindowsPlayer "$(pwd)/Build/windows/$project.exe" \
   -quit
 
 
@@ -22,6 +21,6 @@ then
 	exit 0
 else
 	cat $(pwd)/unity.log
-	echo "Failed to build Application."
+	echo "Failed to load Unity3D project files or compile the .sln."
 	exit 1
 fi

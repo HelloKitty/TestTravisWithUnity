@@ -8,9 +8,15 @@ rvm:
 before_install:
   - chmod +x ./Build.sh
   - chmod +x ./Install.sh
+  - chmod +x ./Deploy.sh
+  - chmod +x ./Load.sh
 
 install:
 - ./Install.sh
 
 script:
-- ./Build.sh
+- travis_wait 120 ./Load.sh
+
+after_success:
+- if [ "$TRAVIS_BRANCH" == "master" ]; then ./Build.sh; fi
+- if [ "$TRAVIS_BRANCH" == "master" ]; then ./Deploy.sh; fi

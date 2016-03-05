@@ -19,7 +19,7 @@ chmod +x /usr/local/Cellar/megatools/p7zip
 cd ./Build/windows/
 ls
 
-7z a QABuild$((TRAVIS_JOB_ID - 1)).7z QABuild_data/
+7z a QABuild$((TRAVIS_JOB_ID - 1)).7z QABuild_data/*
 7z a QABuild$((TRAVIS_JOB_ID - 1)).7z QABuild.exe
 
 # Push the single file with megaput it up to Mega.co

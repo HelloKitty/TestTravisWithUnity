@@ -1,8 +1,9 @@
 #! /bin/sh
 
 # Change this the name of your project. This will be the name of the final executables as well.
+# This will open Unity3D and attempt to generate a build
 
-project="ci-build"
+project="QABuild"
 
 echo "Attempting to build $project for Windows"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
@@ -21,6 +22,6 @@ then
 	exit 0
 else
 	cat $(pwd)/unity.log
-	echo "Failure to build Application"
+	echo "Failed to build Application."
 	exit 1
 fi

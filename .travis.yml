@@ -8,25 +8,15 @@ rvm:
 before_install:
   - chmod +x ./Build.sh
   - chmod +x ./Install.sh
+  - chmod +x ./Deploy.sh
+  - chmod +x ./Load.sh
 
 install:
 - ./Install.sh
 
 script:
-- ./Build.sh
+- travis_wait 120 ./Load.sh
 
 after_success:
-# We need to update home brew because we're gonna pull down a Mega.co tool with it
-- brew update 
-# Install the Mega.co C tools from: https://github.com/megous/megatools
-# Install some random 7zip homebrew tool
-- brew install megatools
-- brew install p7zip
-# Make it runnable
-- chmod +x /usr/local/Cellar/megatools/megacopy
-- chmod +x /usr/local/Cellar/megatools/p7zip
-# 7Zip the directory
-- 7z a ci-build.7z ./Build/windows/ci-build_data/*
-- ls
-# Push the single file with megaput it up to Mega.co
-- megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password ci-build.7z
+- if [ "$TRAVIS_BRANCH" == "master" ]; then ./Build.sh; fi
+- if [ "$TRAVIS_BRANCH" == "master" ]; then ./Deploy.sh; fi

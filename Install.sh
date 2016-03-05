@@ -21,6 +21,13 @@ install() {
 
   echo "Installing "`basename "$package"`
   sudo installer -dumplog -package `basename "$package"` -target /
+  
+  #if we fail to install we should exit
+  if [ $? -ne 0 ]
+  then
+    echo "Failed to install $package."
+  	exit 1
+  fi
 }
 
 # See $BASE_URL/$HASH/unity-$VERSION-$PLATFORM.ini for complete list

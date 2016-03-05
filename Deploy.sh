@@ -16,7 +16,11 @@ chmod +x /usr/local/Cellar/megatools/p7zip
 
 # 7Zip the directory
 # Attach the build number to the build http://stackoverflow.com/questions/12643018/how-to-get-travis-ci-build-number-within-after-script-command
-7z a QABuild$(TRAVIS_BUILD_NUMBER).7z ./Build/windows/QABuild_data/* ./QABuild.exe
+cd ./Build/windows/
+ls
+7z a QABuild$(TRAVIS_BUILD_NUMBER).7z QABuild_data/ QABuild.exe
+cd ..
+cd ..
 ls
 
 # Push the single file with megaput it up to Mega.co

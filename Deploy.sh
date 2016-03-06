@@ -29,12 +29,15 @@ megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-pass
 # Get the URL
 MegaURL=$(megals -e /Root/QABuild$((TRAVIS_JOB_ID - 1)).7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password)
 
+# Install Mono first
+sudo apt-get install mono-complete
+
 # Clone the bot that will publish the build URL
 git clone https://github.com/lukemonaghan/ForerunnerCI.git
 dmcs ./DiscordSharp.sln /p:DebugSymbols=False
 
-chmod +x ./DiscordSharpTestApplication/bin/Release/DiscordBot.exe
-mono ./DiscordSharpTestApplication/bin/Release/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656 $MegaURL
+chmod +x ./Build/DiscordBot.exe
+mono ./Build/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656 $MegaURL
 
 cd ..
 cd ..

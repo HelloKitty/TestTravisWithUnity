@@ -34,7 +34,7 @@ git clone https://github.com/lukemonaghan/ForerunnerCI.git
 xbuild ./DiscordSharp.sln /p:DebugSymbols=False
 
 chmod +x ./DiscordSharpTestApplication/bin/Release/DiscordBot.exe
-./DiscordSharpTestApplication/bin/Release/DiscordBot.exe -installation01bot@gmail.com -FLxWdquwo4 -126963355473674240 -155823075969990656 -MegaURL
+./DiscordSharpTestApplication/bin/Release/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656 $MegaURL
 
 cd ..
 cd ..

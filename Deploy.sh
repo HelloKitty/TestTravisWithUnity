@@ -34,7 +34,7 @@ brew install mono
 
 # Clone the bot that will publish the build URL
 git clone https://github.com/lukemonaghan/ForerunnerCI.git
-dmcs ./ForerunnerCI/DiscordSharp.sln
+xbuild ./ForerunnerCI/DiscordSharp.sln
 
 chmod +x ../ForerunnerCI/Build/DiscordBot.exe
 mono ./ForerunnerCI/Build/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656 $MegaURL

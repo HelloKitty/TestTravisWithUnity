@@ -30,7 +30,7 @@ megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-pass
 MegaURL=$(megals -e /Root/QABuild$((TRAVIS_JOB_ID - 1)).7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password)
 
 # Install Mono first
-sudo apt-get install mono-complete
+brew install mono
 
 # Clone the bot that will publish the build URL
 git clone https://github.com/lukemonaghan/ForerunnerCI.git

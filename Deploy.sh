@@ -37,7 +37,7 @@ git clone https://github.com/lukemonaghan/ForerunnerCI.git
 xbuild ./ForerunnerCI/DiscordSharp.sln
 
 chmod +x ../ForerunnerCI/Build/DiscordBot.exe
-mono ./ForerunnerCI/Build/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656 $MegaURL
+mono ./ForerunnerCI/Build/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656 $MegaURL "Build for: $TRAVIS_COMMIT on $TRAVIS_BRANCH branch"
 
 ls
 cd ..

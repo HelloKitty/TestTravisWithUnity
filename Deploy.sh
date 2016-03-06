@@ -12,6 +12,7 @@ brew install p7zip
 
 # Make it runnable
 chmod +x /usr/local/Cellar/megatools/megacopy
+chmod +x /usr/local/Cellar/megatools/megals
 chmod +x /usr/local/Cellar/megatools/p7zip
 
 # 7Zip the directory
@@ -24,6 +25,16 @@ ls
 
 # Push the single file with megaput it up to Mega.co
 megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password QABuild$((TRAVIS_JOB_ID - 1)).7z
+
+# Get the URL
+MegaURL=$(megals -e /Root/QABuild$((TRAVIS_JOB_ID - 1)).7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password);
+
+# Clone the bot that will publish the build URL
+git clone https://github.com/lukemonaghan/ForerunnerCI.git
+xbuild ./DiscordSharp.sln /p:DebugSymbols=False
+
+chmod +x ./DiscordSharpTestApplication/bin/Release/DiscordBot.exe
+./DiscordSharpTestApplication/bin/Release/DiscordBot.exe -installation01bot@gmail.com -FLxWdquwo4 -126963355473674240 -155823075969990656 -MegaURL
 
 cd ..
 cd ..

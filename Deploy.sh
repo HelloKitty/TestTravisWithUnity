@@ -49,10 +49,10 @@ echo "Going to publish URL with bot cloned."
 
 # Clone the bot that will publish the build URL
 git clone https://github.com/HelloKitty/DiscordCI.git
-xbuild ./DiscordCI.Application.sln
+xbuild ./DiscordCI/DiscordCI.Application.sln
 
-chmod +x ../ForerunnerCI/Build/DiscordBot.exe
-mono ./src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe pioneerCI@yahoo.com botpassword 163384626801278976 163415695491727361 http://www.testurl.com TestCommitHash TestBranchName TestRepo/RepoName
+chmod +x ./DiscordCI/src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe
+mono ./DiscordCI/src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe pioneerCI@yahoo.com botpassword 163384626801278976 163415695491727361 http://www.testurl.com TestCommitHash TestBranchName TestRepo/RepoName
 
 ls
 cd ..

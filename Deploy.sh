@@ -49,7 +49,7 @@ echo "Going to publish URL with bot cloned."
 
 # Clone the bot that will publish the build URL
 git clone https://github.com/HelloKitty/DiscordCI.git
-nuget restore ./DiscordCI/DiscordCI.Application.sln
+mono nuget.exe restore ./DiscordCI/DiscordCI.Application.sln
 xbuild ./DiscordCI/DiscordCI.Application.sln
 
 chmod +x ./DiscordCI/src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe

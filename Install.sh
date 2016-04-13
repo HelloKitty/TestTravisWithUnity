@@ -34,8 +34,9 @@ install() {
 # of available packages, where PLATFORM is `osx` or `win`
 
 install "MacEditorInstaller/Unity-$VERSION.pkg"
-install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
-
 # After installation would should clean this up
 rm Unity-$VERSION.pkg
+
+install "MacEditorTargetInstaller/UnitySetup-Windows-Support-for-Editor-$VERSION.pkg"
+# After installation would should clean this up
 rm UnitySetup-Windows-Support-for-Editor-$VERSION.pkg

@@ -1,5 +1,10 @@
 # This sets up a Mac OS enviroment on TravisCI and installs and builds the project.
 
+# Don't do push tests on staging
+branches:
+  except:
+    - staging
+    
 language: objective-c
 osx_image: xcode61
 rvm:
@@ -10,6 +15,10 @@ before_install:
   - chmod +x ./Install.sh
   - chmod +x ./Deploy.sh
   - chmod +x ./Load.sh
+  
+cache:
+  directories:
+  - ./Library
 
 install:
 - ./Install.sh
@@ -18,5 +27,5 @@ script:
 - travis_wait 120 ./Load.sh
 
 after_success:
-- if [ "$TRAVIS_BRANCH" == "master" ]; then ./Build.sh; fi
-- if [ "$TRAVIS_BRANCH" == "master" ]; then ./Deploy.sh; fi
+- if [ "$TRAVIS_BRANCH" == "master" ]; then travis_wait 120 ./Build.sh; fi
+- if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ $? -eq 0 ]]; then travis_wait 120 ./Deploy.sh; fi

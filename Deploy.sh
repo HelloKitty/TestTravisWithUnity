@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# First to make space we need to remove Assets and Library (This is after Caching so it's safe to remove Library)
+rm -r Library
+rm -r Assets
+
 # This will install various tools needed for deployment and then push the build to Mega.co
 
 # We need to update home brew because we're gonna pull down a Mega.co tool with it
@@ -9,6 +13,8 @@ brew update
 # Install some random 7zip homebrew tool
 brew install megatools
 brew install p7zip
+
+echo "Added p7zip and megatools"
 
 # Make it runnable
 chmod +x /usr/local/Cellar/megatools/megacopy
@@ -20,8 +26,12 @@ chmod +x /usr/local/Cellar/megatools/p7zip
 cd ./Build/windows/
 ls
 
+echo "Going to zip build."
+
 7z a QABuild$((TRAVIS_JOB_ID - 1)).7z QABuild_Data
 7z a QABuild$((TRAVIS_JOB_ID - 1)).7z QABuild.exe
+
+echo "Going to push build to mega"
 
 # Push the single file with megaput it up to Mega.co
 megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password QABuild$((TRAVIS_JOB_ID - 1)).7z
@@ -29,15 +39,20 @@ megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-pass
 # Get the URL
 MegaURLOutput=$(megals -e /Root/QABuild$((TRAVIS_JOB_ID - 1)).7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password)
 MegaURL=${MegaURLOutput% *}
+
+echo "Going to install mono."
+
 # Install Mono first
 brew install mono
 
+echo "Going to publish URL with bot cloned."
+
 # Clone the bot that will publish the build URL
-git clone https://github.com/lukemonaghan/ForerunnerCI.git
-xbuild ./ForerunnerCI/DiscordSharp.sln
+git clone https://github.com/HelloKitty/DiscordCI.git
+xbuild ./DiscordCI.Application.sln
 
 chmod +x ../ForerunnerCI/Build/DiscordBot.exe
-mono ./ForerunnerCI/Build/DiscordBot.exe installation01bot@gmail.com FLxWdquwo4 126963355473674240 155823075969990656  $MegaURL $TRAVIS_COMMIT $TRAVIS_BRANCH $TRAVIS_REPO_SLUG "@everyone Build generated from merge to master (no lighting)." 
+mono ./src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe pioneerCI@yahoo.com botpassword 163384626801278976 163415695491727361 http://www.testurl.com TestCommitHash TestBranchName TestRepo/RepoName
 
 ls
 cd ..

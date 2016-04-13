@@ -54,7 +54,7 @@ xbuild ./DiscordCI/DiscordCI.Application.sln
 chmod +x ./DiscordCI/src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe
 
 # We need the certs discussed in issue https://github.com/RogueException/Discord.Net/issues/39
-certmgr -ssl https://gateway-1.discord.gg
+certmgr -ssl https://discord.gg
 
 mono ./DiscordCI/src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe pioneerCI@yahoo.com botpassword 163384626801278976 163415695491727361 http://www.testurl.com TestCommitHash TestBranchName TestRepo/RepoName
 

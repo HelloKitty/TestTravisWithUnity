@@ -40,16 +40,10 @@ megaput --path /Root -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-pass
 MegaURLOutput=$(megals -e /Root/QABuild$((TRAVIS_JOB_ID - 1)).7z -u unitytravisci@yahoo.com -p TravisUnityCI69 --no-ask-password)
 MegaURL=${MegaURLOutput% *}
 
-echo "Going to install mono."
-
-# Install Mono first
-brew install mono
-
 echo "Going to publish URL with bot cloned."
 
 # Clone the bot that will publish the build URL
 git clone https://github.com/HelloKitty/DiscordCI.git
-mono --runtime=v4.0 ./.nuget/NuGet.exe restore ./DiscordCI/DiscordCI.Application.sln
 xbuild ./DiscordCI/DiscordCI.Application.sln
 
 chmod +x ./DiscordCI/src/DiscordCI.Application/bin/Debug/DiscordCI.Application.exe
